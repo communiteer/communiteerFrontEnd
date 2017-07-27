@@ -23,7 +23,7 @@ class AddGroup extends Component {
 	render() {
 		const {updateGroup} = this.props;
 		return (
-			<Card>
+			<View style={styles.container}>
 				<CardSection>
 					<Input
 						label="Group Name"
@@ -56,8 +56,20 @@ class AddGroup extends Component {
 						Create Group
 					</Button>
 				</CardSection>
-			</Card>
+			</View>
 		)
+	}
+}
+
+const styles = {
+	container: {
+		flex: 1,
+		backgroundColor: '#DDFFF7'
+	},
+	imageStyle: {
+		height: 200,
+		flex: 1,
+		width: null
 	}
 }
 

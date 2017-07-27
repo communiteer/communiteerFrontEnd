@@ -12,17 +12,19 @@ import AddEvent from './components/AddEvent';
 import AddGroup from './components/AddGroup';
 import EventCard from './components/EventCard';
 import GroupCard from './components/GroupCard';
-//import LoginForm from './components/LoginForm'
+import {Header} from './components/common'
 
 const RouterComponent = () => {
   return (
-    <Router sceneStyle={{ paddingTop: 65 }}>
+    <Router  sceneStyle={{ paddingTop: 65}} >
       
 			<Scene key="root">
  
         <Scene
           key="tabbar"
-          tabs
+          tabBarStyle={ styles.tabBarStyle }
+					tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
+					tabs
         >
 
           <Scene tabs key="calendar" title="CALENDAR" icon={CalendarIcon} component={CalendarPage} hideNavBar>
@@ -41,7 +43,7 @@ const RouterComponent = () => {
           </Scene>
 
         </Scene>
-        <Scene key="addGroup" component={AddGroup} title="Add Group!" />
+        <Scene  key="addGroup" component={AddGroup} title="Add Group!" />
         <Scene key="addEvent" component={AddEvent} title="Add Event!" />
         <Scene key="anEvent" component={EventCard} title="The Event" />
 				<Scene key="aGroup" component={GroupCard} title="Group"/>
@@ -54,7 +56,7 @@ const RouterComponent = () => {
 function CalendarIcon(props) {
 	return (
 		<View>
-			<Icon name="calendar" size={30} color="#900" />
+			<Icon name="calendar" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -63,7 +65,7 @@ function CalendarIcon(props) {
 function GroupsIcon(props) {
 	return (
 		<View>
-			<Icon name="group" size={30} color="#900" />
+			<Icon name="group" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -71,7 +73,7 @@ function GroupsIcon(props) {
 function HomeIcon(props) {
 	return (
 		<View>
-			<Icon name="home" size={30} color="#900" />
+			<Icon name="home" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -79,7 +81,7 @@ function HomeIcon(props) {
 function NotificationsIcon(props) {
 	return (
 		<View>
-			<Icon name="flag" size={30} color="#900" />
+			<Icon name="flag" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -87,9 +89,22 @@ function NotificationsIcon(props) {
 function SearchIcon(props) {
 	return (
 		<View>
-			<Icon name="search" size={30} color="#900" />
+			<Icon name="search" size={30} color="#6DC0D5" />
 		</View>
 	)
+}
+
+const styles = {
+	tabBarStyle: {
+		backgroundColor: '#2E6171',
+		height: 100
+	},
+	barButtonTextStyle: {
+		color: '#2E6171'
+	},
+	tabBarSelectedItemStyle: {
+		color: "#DDD5D0"
+	}
 }
 
 export default RouterComponent;

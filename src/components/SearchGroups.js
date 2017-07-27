@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { FetchAllGroupsInArea, FetchAllEventsInArea } from '../actions'
 
-import { Header, Button, CardSection } from './common';
+import { Header, Button, CardSection, Card } from './common';
 import SearchGroupCard from './SearchGroupCard';
 
 import { Actions } from 'react-native-router-flux';
@@ -24,7 +24,7 @@ class SearchGroups extends Component {
 	render() {
 		return (
 			<View>
-				<ScrollView style={styles.scrollViewStyle}>
+				<ScrollView vertical style={styles.scrollViewStyle}>
 					{this.props.groups.groups.map(group => {
 						return (
 							<TouchableOpacity  key={group.group_id} onPress={() => Actions.aGroup(group)}>
@@ -68,7 +68,7 @@ const styles = {
 		color: '#ffffff'
 	},
 		scrollViewStyle: {
-		flexDirection: 'column'
+		flexDirection: 'row'
 
 	}
 }

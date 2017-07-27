@@ -16,9 +16,8 @@ class EventCard extends Component {
 
 	render() {
 		return (
-			<Card>
+			<View style={styles.container}>
 				<ScrollView>
-
 					<CardSection>
 						<Image
 							style={styles.imageStyle}
@@ -54,7 +53,7 @@ class EventCard extends Component {
 					</CardSection>
 
 				</ScrollView>
-			</Card>
+			</View>
 		)
 	}
 };

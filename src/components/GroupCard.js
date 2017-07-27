@@ -1,14 +1,14 @@
 import React, { Component } from 'react';
 import { Text, View, Image, ScrollView } from 'react-native';
 import * as actions from '../actions';
-import { Card, CardSection } from './common';
+import { Card, CardSection, Header } from './common';
 
 
 class GroupCard extends Component {
 
 	render() {
 		return (
-			<Card>
+			<View style={styles.container}>
 				<ScrollView>
 					<CardSection>
 						<Image
@@ -33,12 +33,16 @@ class GroupCard extends Component {
 						<Text>{this.props.description}</Text>
 					</CardSection>
 				</ScrollView>
-			</Card>
+			</View>
 		)
 	}
 };
 
 const styles = {
+	container: {
+		flex: 1,
+		backgroundColor: '#DDFFF7'
+	},
 	imageStyle: {
 		height: 200,
 		flex: 1,

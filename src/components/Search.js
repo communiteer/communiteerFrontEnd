@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import { Text, View, ScrollView } from 'react-native';
-import { Header, Button, CardSection } from './common';
+import { Header, Button, CardSection, Card } from './common';
 import SearchGroups from './SearchGroups';
 import SearchEvents from './SearchEvents';
 
@@ -59,9 +59,7 @@ constructor (props) {
 const styles = {
 	container: {
 		flex: 1,
-		// justifyContent: 'center',
-		// alignItems: 'center',
-		backgroundColor: '#bb3000'
+		backgroundColor: '#DDFFF7'
 	},
 	search: {
 		fontSize: 20,
