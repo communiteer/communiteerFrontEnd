@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, Image } from 'react-native';
 import { FetchUserData } from '../actions'
 
-import { Card, CardSection } from './common';
+import { Card, CardSection, Header, Button } from './common';
 
 import { Actions } from 'react-native-router-flux';
 import * as actions from '../actions';
@@ -20,22 +20,25 @@ class ProfilePage extends Component {
 
 	render() {
 		return (
-			<Card style={styles.containerStyle}>
+			<View style={styles.container}>
+				<Header headerText='Profile' />
 				<CardSection>
 					<Image
 						style={styles.imageStyle}
-						source={{uri: this.props.user.profilePicture}} />
+						source={{ uri: this.props.user.profilePicture }} />
+				</CardSection>
+
+				<CardSection >
+						<Text style={styles.helloText}>Hello {this.props.user.user_fName}!</Text>
 				</CardSection>
 
 				<CardSection>
-					<View style={styles.headerContentStyle}>
-						<Text>Hello {this.props.user.user_fName}</Text>
-					</View>
+					<Button onPress={() => Actions.addGroup()}>Add Group</Button>
+					<Button onPress={() => Actions.addEvent()}>Add Event</Button>
 				</CardSection>
 
-				<Text onPress={() => Actions.addGroup()}>Add Group</Text>
-				<Text onPress={() => Actions.addEvent()}>Add Event</Text>
-			</Card>
+
+			</View>
 		)
 	}
 };
@@ -55,22 +58,15 @@ const mapStateToProps = (state) => {
 }
 
 const styles = {
-	containerStyle: {
-		paddingTop: 30,
-		backgroundColor: '#bb0000'
+	container: {
+		flex: 1,
+		backgroundColor: '#DDFFF7'
 	},
-
-	headerContentStyle: {
-		flexDirection: 'column',
-		justifyContent: 'space-around'
-	},
-	headerTextStyle: {
-		fontSize: 18
-	},
-	thumbnailStyle: {
-		height: 50,
-		width: 50
-
+	helloText: {
+		fontSize: 18,
+		fontWeight: '600',
+		paddingTop: 10,
+		paddingBottom: 10
 	},
 	thumbnailContainerStyle: {
 		justifyContent: 'center',
