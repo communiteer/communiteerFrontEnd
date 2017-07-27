@@ -1,27 +1,30 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux'
 import {
   Text,
   View,
   StyleSheet,
   TouchableOpacity
 } from 'react-native';
-import {Agenda} from 'react-native-calendars';
+import { Agenda } from 'react-native-calendars';
 
+import { FetchUserEvents } from '../actions'
+import * as actions from '../actions';
 import Card from './common/Card';
 import { Actions } from 'react-native-router-flux';
 
-export default class Calendar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      items: {
-        '2017-07-16': {
-          groupname:'Wackey Races'
-        }
-      }
-    };
-  }
+const userId = 1
 
+class Calendar extends Component {
+  constructor() {
+    super()
+    this.state = {
+      items: {}
+    }
+  }
+  componentDidMount() {
+    this.props.fetchUserEvents()
+  }
   render() {
     return (
       <Agenda
@@ -34,7 +37,6 @@ export default class Calendar extends Component {
       />
     );
   }
-
   loadItems(day) {
     // dispatch thunk for fetching events
     setTimeout(() => {
@@ -42,16 +44,34 @@ export default class Calendar extends Component {
       for (let i = -15; i < 85; i++) {
         const time = day.timestamp + i * 24 * 60 * 60 * 1000;
         const strTime = this.timeToString(time);
-        newItems[strTime] = [this.state.items[strTime]] || []
+        newItems[strTime] = this.state.items[strTime] || []
+        this.props.event.forEach(events => {
+          if (strTime === events.event_date.slice(0, 10)) {
+            newItems[strTime] = [{
+              "event_id": events.event_id,
+              "event_name": events.event_name,
+              "event_date": events.event_date,
+              "event_time": events.event_time.slice(0,5),
+              "event_description": events.event_descrtiption,
+              "area_name": events.area_name,
+              "group_name": events.group_name
+            }];
+          }
+        })
       }
-      this.setState({items: newItems});
+      this.setState({ items: newItems });
     }, 1000);
+
   }
 
-  renderItem (item) {
+  renderItem(item) {
     return (
-      <View style={[styles.item, {height: 50}]}>
-          <Text onPress={()=> Actions.anEvent()}>{item.groupname}</Text>
+      <View style={[styles.item, { height: 70 }]} >
+        <TouchableOpacity onPress={() => Actions.anEvent(item)}>
+        <Text>{item.group_name}</Text>
+        <Text>{item.event_name}</Text>
+        <Text>{item.event_time}</Text>
+        </TouchableOpacity>
       </View>
     );
   }
@@ -63,7 +83,6 @@ export default class Calendar extends Component {
   };
 
   rowHasChanged(r1, r2) {
-    console.log('ROW HAS CHANGED');
     return r1.name !== r2.name;
   };
 
@@ -72,6 +91,20 @@ export default class Calendar extends Component {
     return date.toISOString().split('T')[0];
   };
 };
+const mapDispatchToProps = (dispatch) => {
+  return {
+    fetchUserEvents: () => {
+      dispatch(actions.fetchUserEvents())
+    }
+  }
+}
+const mapStateToProps = (state) => {
+  console.log(state)
+  return {
+    event: state.userEvents.userEvents.data || [],
+  }
+}
+
 
 const styles = StyleSheet.create({
   item: {
@@ -84,7 +117,9 @@ const styles = StyleSheet.create({
   },
   emptyDate: {
     height: 15,
-    flex:1,
+    flex: 1,
     paddingTop: 30
   }
 });
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar)

@@ -9,6 +9,7 @@ import AuthReducer from './AuthReducer';
 import MyGroupsMemberReducer from './MyGroupsMemberReducer';
 import MyGroupsAdminReducer from './MyGroupsAdminReducer';
 
+
 export default combineReducers({
   user: UserProfileReducer,
   groups: GroupsInAreaReducer,
