@@ -13,7 +13,6 @@ import * as actions from '../actions';
 import Card from './common/Card';
 import { Actions } from 'react-native-router-flux';
 
-const userId = 1
 
 class Calendar extends Component {
   constructor() {
@@ -23,9 +22,16 @@ class Calendar extends Component {
     }
   }
   componentDidMount() {
-    this.props.fetchUserEvents(this.props.event_id)
+    this.props.fetchUserEvents(this.props.userId)
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.userId !== nextProps.userId) {
+      this.props.fetchUserEvents(nextProps.userId)     
+    }
   }
   render() {
+   console.log(this.props.userId)
     return (
       <Agenda
         items={this.state.items}
@@ -93,15 +99,17 @@ class Calendar extends Component {
 };
 const mapDispatchToProps = (dispatch) => {
   return {
-    fetchUserEvents: () => {
-      dispatch(actions.fetchUserEvents())
+    fetchUserEvents: (userId) => {
+      dispatch(actions.fetchUserEvents(userId))
     }
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state.events)
+  //console.log(state.user.user_id)
   return {
     event: state.userEvents.userEvents.data || [],
+    user: state.user,
+    userId: state.user.user_id
   }
 }
 
