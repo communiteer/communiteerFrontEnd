@@ -3,11 +3,12 @@ import { ROOT } from '../../config.js';
 import axios from 'react-native-axios'
 
 
+
 export function fetchUserEvents(userId) {
   return function (dispatch) {
     dispatch(fetchUserEventsRequest());
     // go get data through fetch request
-    axios.get(`${ROOT}/users/${userId}/events`)
+    axios.get(`${ROOT}/users/1/events`)
       .then(res => {
         //receive data
         dispatch(fetchUserEventsSuccess(res.data))
