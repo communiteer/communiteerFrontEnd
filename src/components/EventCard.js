@@ -22,7 +22,7 @@ class EventCard extends Component {
 					<CardSection>
 						<Image
 							style={styles.imageStyle}
-							source={{ uri: '/Users/benwhitfield/Documents/code/Communiteer/frontEnd/src/images/EVENTS.jpg' }}
+							source={{ uri: '/Users/benwhitfield/Documents/code/Communiteer/communiteerFrontEnd/src/images/event.jpg' }}
 						/>
 					</CardSection>
 					<CardSection>

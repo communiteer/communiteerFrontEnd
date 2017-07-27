@@ -13,7 +13,7 @@ class GroupCard extends Component {
 					<CardSection>
 						<Image
 							style={styles.imageStyle}
-							source={{ uri: '/Users/benwhitfield/Documents/code/Communiteer/frontEnd/src/images/working groups.jpg' }}
+							source={{ uri: '/Users/benwhitfield/Documents/code/Communiteer/communiteerFrontEnd/src/images/Group Image.jpg' }}
 						/>
 					</CardSection>
 
