@@ -6,7 +6,9 @@ import DisplayGroupPageReducer from './DisplayGroupPageReducer';
 import DisplayEventSkillsReducer from './DisplayEventSkillsReducer';
 import AddGroupReducer from './AddGroupReducer';
 import AuthReducer from './AuthReducer';
-import UserEventsReducer from './UserEventsReducer';
+import MyGroupsMemberReducer from './MyGroupsMemberReducer';
+import MyGroupsAdminReducer from './MyGroupsAdminReducer';
+
 
 export default combineReducers({
   user: UserProfileReducer,
@@ -16,5 +18,6 @@ export default combineReducers({
   eventSkills: DisplayEventSkillsReducer,
   createGroupForm: AddGroupReducer,
   auth: AuthReducer,
-  userEvents: UserEventsReducer
+  myGroupsMember: MyGroupsMemberReducer,
+  myGroupsAdmin: MyGroupsAdminReducer
 })

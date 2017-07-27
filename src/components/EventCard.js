@@ -11,12 +11,10 @@ class EventCard extends Component {
 	}
 
 	componentDidMount() {
-		// console.log(this.props)
-		this.props.fetchAllEventSkills(this.props.eventId)
+		this.props.fetchAllEventSkills(this.props.event_id)
 	}
 
 	render() {
-		console.log(this.props.eventSkills.eventSkills[0])
 		return (
 			<Card>
 				<ScrollView>
@@ -48,7 +46,7 @@ class EventCard extends Component {
 		
 							{this.props.eventSkills.eventSkills.map(skill => {
 								return (
-									<Text> {skill.skill_name}</Text>
+									<Text key={skill.skill_name}> {skill.skill_name}</Text>
 								)
 							})}
 				
@@ -68,13 +66,12 @@ const formatDate = (dateString) => {
 const mapDispatchToProps = (dispatch) => {
 	return {
 		fetchAllEventSkills: (eventId) => {
-			dispatch(fetchAllEventSkills(1))
+			dispatch(fetchAllEventSkills(eventId))
 		}
 	}
 }
 
 const mapStateToProps = (state) => {
-	console.log(state)
 	return {
 		eventSkills: state.eventSkills
 	}
