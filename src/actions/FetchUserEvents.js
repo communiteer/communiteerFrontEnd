@@ -5,10 +5,11 @@ import axios from 'react-native-axios'
 
 
 export function fetchUserEvents(userId) {
+  //console.log(userId)
   return function (dispatch) {
     dispatch(fetchUserEventsRequest());
     // go get data through fetch request
-    axios.get(`${ROOT}/users/1/events`)
+    axios.get(`${ROOT}/users/${userId}/events`)
       .then(res => {
         //receive data
         dispatch(fetchUserEventsSuccess(res.data))
