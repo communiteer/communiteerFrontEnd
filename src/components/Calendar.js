@@ -23,7 +23,7 @@ class Calendar extends Component {
     }
   }
   componentDidMount() {
-    this.props.fetchUserEvents()
+    this.props.fetchUserEvents(this.props.event_id)
   }
   render() {
     return (
@@ -67,7 +67,7 @@ class Calendar extends Component {
   renderItem(item) {
     return (
       <View style={[styles.item, { height: 70 }]} >
-        <TouchableOpacity onPress={() => Actions.anEvent(item)}>
+        <TouchableOpacity onPress={() => Actions.anEvent(item)} >
         <Text>{item.group_name}</Text>
         <Text>{item.event_name}</Text>
         <Text>{item.event_time}</Text>
@@ -99,7 +99,7 @@ const mapDispatchToProps = (dispatch) => {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state)
+  console.log(state.events)
   return {
     event: state.userEvents.userEvents.data || [],
   }
