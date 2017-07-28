@@ -11,4 +11,5 @@ export * from './FetchAllSkills';
 export * from './FetchAllAreas';
 export * from './FetchAllEventSkills';
 export * from './AddGroupAction';
+export * from './AddEventAction';
 export * from './AuthActions';
