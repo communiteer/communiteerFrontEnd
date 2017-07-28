@@ -70,8 +70,7 @@ const styles = {
 		color: '#ffffff'
 	},
 	scrollViewStyle: {
-		flexDirection: 'column'
-
+		flexDirection: 'column',
 	}
 }
 

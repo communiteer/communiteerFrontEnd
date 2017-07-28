@@ -68,8 +68,9 @@ const styles = {
 		color: '#ffffff'
 	},
 		scrollViewStyle: {
-		flexDirection: 'row'
-
+		flexDirection: 'column',
+		paddingLeft: 5,
+		paddingRight: 20
 	}
 }
 

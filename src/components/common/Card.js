@@ -1,5 +1,5 @@
 import React from 'react';
-import { View } from 'react-native';
+import { View, Dimensions } from 'react-native';
 
 const Card = (props) => {
 return (
@@ -12,7 +12,9 @@ return (
 
 const styles = {
     containerStyle: {
+        width: Dimensions.get('screen').width,
         borderWidth: 1,
+        backgroundColor: 20,
         borderRadius: 2,
         borderColor: '#ddd',
         borderBottomWidth:0,
@@ -21,9 +23,8 @@ const styles = {
         shadowOpacity: 0.1,
         shadowRadius: 2,
         elevation: 1,
-        marginLeft: 5,
-        marginRight: 5,
-        marginTop: 25
+        marginTop: 25,
+        padding: 5
     }
 
 }

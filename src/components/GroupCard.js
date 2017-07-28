@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Text, View, Image, ScrollView } from 'react-native';
 import * as actions from '../actions';
-import { Card, CardSection, Header } from './common';
+import { Card, CardSection, Header, Button } from './common';
+import {Actions} from 'react-native-router-flux';
 
 
 class GroupCard extends Component {
@@ -31,6 +32,9 @@ class GroupCard extends Component {
 
 					<CardSection>
 						<Text>{this.props.description}</Text>
+					</CardSection>
+					<CardSection>
+						<Button onPress={() => Actions.addEvent({groupId: this.props.group_id})}>Add Event</Button>
 					</CardSection>
 				</ScrollView>
 			</View>
