@@ -8,6 +8,7 @@ import { Actions } from 'react-native-router-flux';
 class LoginForm extends Component {
   constructor (props) {
     super(props);
+    this.state = {loading: false}
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
   }
@@ -47,9 +48,17 @@ class LoginForm extends Component {
           {this.props.error}
         </Text>
 
-        <CardSection >
-          <Button onPress={() => Actions.home()}>Log In</Button>
-        </CardSection>
+        {!this.state.loading && <CardSection >
+          <Button onPress={() => {
+              this.setState({loading: true});
+              setTimeout(function () {
+                Actions.home()
+              }, 1000)
+            }}>Log In</Button>
+        </CardSection>}
+        {
+          this.state.loading && <Spinner />
+        }
       </Card>
     )
   }
