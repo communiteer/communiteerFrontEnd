@@ -56,7 +56,7 @@ class MyGroups extends Component {
 const styles = {
 	container: {
 		flex: 1,
-		backgroundColor: '#bb0000'
+		backgroundColor: '#DDFFF7'
 	},
 	groups: {
 		fontSize: 20,

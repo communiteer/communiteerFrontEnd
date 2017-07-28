@@ -3,7 +3,7 @@ import { connect } from 'react-redux'
 import { Text, View, ScrollView, TouchableOpacity } from 'react-native';
 import { fetchAllEventsInArea } from '../actions'
 
-import { Header, Button, CardSection } from './common';
+import { Header, Button, CardSection, Card } from './common';
 import SearchEventCard from './SearchEventCard';
 
 import { Actions } from 'react-native-router-flux';
@@ -24,16 +24,17 @@ class SearchEvents extends Component {
 	render() {
 
 		return (
-
-			<ScrollView style={styles.scrollViewStyle}>
-				{this.props.events.events.map(event => {
-					return (
-						<TouchableOpacity key={event.event_id} onPress={() => Actions.anEvent(event)}>
-							<SearchEventCard event={event} />
-						</TouchableOpacity>
-					)
-				})}
-			</ScrollView>
+			<View>
+				<ScrollView vertical style={styles.scrollViewStyle}>
+					{this.props.events.events.map(event => {
+						return (
+							<TouchableOpacity key={event.event_id} onPress={() => Actions.anEvent(event)}>
+								<SearchEventCard event={event} />
+							</TouchableOpacity>
+						)
+					})}
+				</ScrollView>
+			</View>
 
 		)
 	}

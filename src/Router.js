@@ -13,19 +13,20 @@ import AddGroup from './components/AddGroup';
 import EventCard from './components/EventCard';
 import GroupCard from './components/GroupCard';
 import AdminGroupCard from './components/AdminGroupCard';
-
-//import LoginForm from './components/LoginForm'
+import {Header} from './components/common'
 
 const RouterComponent = () => {
-	return (
-		<Router sceneStyle={{ paddingTop: 65 }}>
-
+  return (
+    <Router  sceneStyle={{ paddingTop: 65}} >
+      
 			<Scene key="root">
-
-				<Scene
-					key="tabbar"
+ 
+        <Scene
+          key="tabbar"
+          tabBarStyle={ styles.tabBarStyle }
+					tabBarSelectedItemStyle={styles.tabBarSelectedItemStyle}
 					tabs
-				>
+        >
 
 					<Scene tabs key="calendar" title="CALENDAR" icon={CalendarIcon} component={CalendarPage} hideNavBar>
 					</Scene>
@@ -57,7 +58,7 @@ const RouterComponent = () => {
 function CalendarIcon(props) {
 	return (
 		<View>
-			<Icon name="calendar" size={30} color="#900" />
+			<Icon name="calendar" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -66,7 +67,7 @@ function CalendarIcon(props) {
 function GroupsIcon(props) {
 	return (
 		<View>
-			<Icon name="group" size={30} color="#900" />
+			<Icon name="group" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -74,7 +75,7 @@ function GroupsIcon(props) {
 function HomeIcon(props) {
 	return (
 		<View>
-			<Icon name="home" size={30} color="#900" />
+			<Icon name="home" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -82,7 +83,7 @@ function HomeIcon(props) {
 function NotificationsIcon(props) {
 	return (
 		<View>
-			<Icon name="flag" size={30} color="#900" />
+			<Icon name="flag" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
@@ -90,13 +91,22 @@ function NotificationsIcon(props) {
 function SearchIcon(props) {
 	return (
 		<View>
-			<Icon name="search" size={30} color="#900" />
+			<Icon name="search" size={30} color="#6DC0D5" />
 		</View>
 	)
 }
 
-export default RouterComponent;
+const styles = {
+	tabBarStyle: {
+		backgroundColor: '#2E6171',
+		height: 100
+	},
+	barButtonTextStyle: {
+		color: '#2E6171'
+	},
+	tabBarSelectedItemStyle: {
+		color: "#DDD5D0"
+	}
+}
 
-				//  <Scene key="auth">
-				// 	<Scene key="login" component={LoginForm} title="Please Login" />
-				// </Scene>
+export default RouterComponent;
