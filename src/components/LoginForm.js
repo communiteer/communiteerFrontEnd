@@ -3,14 +3,13 @@ import { Text } from 'react-native';
 import { connect } from 'react-redux'
 import { Card, CardSection, Input, Button, Spinner } from './common';
 import { emailChanged, passwordChanged, loginUser } from '../actions'
+import { Actions } from 'react-native-router-flux';
 
 class LoginForm extends Component {
   constructor (props) {
     super(props);
     this.onEmailChange = this.onEmailChange.bind(this);
     this.onPasswordChange = this.onPasswordChange.bind(this);
-    this.onButtonPress = this.onButtonPress.bind(this);
-    this.renderButton = this.renderButton.bind(this);
   }
   onEmailChange(text) {
     this.props.emailChanged(text)
@@ -20,22 +19,7 @@ class LoginForm extends Component {
     this.props.passwordChanged(text);
   }
 
-  onButtonPress() {
-    const { email, password } = this.props;
-    this.props.loginUser({ email, password })
-  }
 
-  renderButton() {
-    if (this.props.loading) {
-      return <Spinner size="large" />
-    }
-
-    return (
-      <Button onPress={this.onButtonPress.bind(this)}>
-        Login
-            </Button>
-    )
-  }
 
   render() {
     return (
@@ -63,8 +47,8 @@ class LoginForm extends Component {
           {this.props.error}
         </Text>
 
-        <CardSection onPress={this.onButtonPress.bind(this)}>
-          {this.renderButton()}
+        <CardSection >
+          <Button onPress={() => Actions.home()}>Log In</Button>
         </CardSection>
       </Card>
     )

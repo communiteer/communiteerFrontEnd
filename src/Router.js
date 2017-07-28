@@ -13,13 +13,18 @@ import AddGroup from './components/AddGroup';
 import EventCard from './components/EventCard';
 import GroupCard from './components/GroupCard';
 import AdminGroupCard from './components/AdminGroupCard';
-import {Header} from './components/common'
+import LoginForm from './components/LoginForm';
+import {Header} from './components/common';
 
 const RouterComponent = () => {
   return (
     <Router  sceneStyle={{ paddingTop: 65}} >
       
 			<Scene key="root">
+
+				<Scene key="auth">
+					<Scene key="login" title="Please Login" component={LoginForm}/>
+				</Scene>
  
         <Scene
           key="tabbar"
