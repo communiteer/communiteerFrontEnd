@@ -34,7 +34,6 @@ class ProfilePage extends Component {
 
 				<CardSection>
 					<Button onPress={() => Actions.addGroup()}>Add Group</Button>
-					<Button onPress={() => Actions.addEvent()}>Add Event</Button>
 				</CardSection>
 
 
