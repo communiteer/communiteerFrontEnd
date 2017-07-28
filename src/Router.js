@@ -12,6 +12,7 @@ import AddEvent from './components/AddEvent';
 import AddGroup from './components/AddGroup';
 import EventCard from './components/EventCard';
 import GroupCard from './components/GroupCard';
+import AdminGroupCard from './components/AdminGroupCard';
 import {Header} from './components/common'
 
 const RouterComponent = () => {
@@ -27,30 +28,31 @@ const RouterComponent = () => {
 					tabs
         >
 
-          <Scene tabs key="calendar" title="CALENDAR" icon={CalendarIcon} component={CalendarPage} hideNavBar>
-          </Scene>
+					<Scene tabs key="calendar" title="CALENDAR" icon={CalendarIcon} component={CalendarPage} hideNavBar>
+					</Scene>
 
-          <Scene tabs key="myGroups" title="GROUPS" icon={GroupsIcon} component={MyGroups} hideNavBar>
-          </Scene>
+					<Scene tabs key="myGroups" title="GROUPS" icon={GroupsIcon} component={MyGroups} hideNavBar>
+					</Scene>
 
-          <Scene tabs initial key="home" title="HOME" icon={HomeIcon} component={ProfilePage} hideNavBar>
-          </Scene>
+					<Scene tabs initial key="home" title="HOME" icon={HomeIcon} component={ProfilePage} hideNavBar>
+					</Scene>
 
-          <Scene tabs key="notifications" title="NOTIFICATIONS" icon={NotificationsIcon} component={Notifications} hideNavBar>
-          </Scene>
+					<Scene tabs key="notifications" title="NOTIFICATIONS" icon={NotificationsIcon} component={Notifications} hideNavBar>
+					</Scene>
 
-          <Scene tabs key="search" title="SEARCH" icon={SearchIcon} component={Search} hideNavBar>
-          </Scene>
+					<Scene tabs key="search" title="SEARCH" icon={SearchIcon} component={Search} hideNavBar>
+					</Scene>
 
-        </Scene>
-        <Scene  key="addGroup" component={AddGroup} title="Add Group!" />
-        <Scene key="addEvent" component={AddEvent} title="Add Event!" />
-        <Scene key="anEvent" component={EventCard} title="The Event" />
-				<Scene key="aGroup" component={GroupCard} title="Group"/>
+				</Scene>
+				<Scene key="addGroup" component={AddGroup} title="Add Group!" />
+				<Scene key="addEvent" component={AddEvent} title="Add Event!" />
+				<Scene key="anEvent" component={EventCard} title="The Event" />
+				<Scene key="aGroup" component={GroupCard} title="Group" />
+				<Scene key="adminGroup" component={AdminGroupCard} title="Group" />
 
-      </Scene>
-    </Router>
-  );
+			</Scene>
+		</Router>
+	);
 }
 
 function CalendarIcon(props) {
@@ -108,7 +110,3 @@ const styles = {
 }
 
 export default RouterComponent;
-
-				//  <Scene key="auth">
-				// 	<Scene key="login" component={LoginForm} title="Please Login" />
-				// </Scene>
